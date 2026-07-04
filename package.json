@@ -1,0 +1,20 @@
+{
+  "name": "closedai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "hub.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@openai/agents": "^0.12.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "zod": "^4.4.3"
+  }
+}
