@@ -3,26 +3,34 @@ const button = document.getElementById("sendButton");
 const chatBox = document.getElementById("chatBox");
 const thinking = document.getElementById("thinking");
 
+function scrollChatToBottom(){
+    requestAnimationFrame(() => {
+        chatBox.scrollTo({
+            top: chatBox.scrollHeight,
+            behavior: "smooth"
+        });
+    });
+}
+
 function addMessage(text, type){
     const div = document.createElement("div");
     div.classList.add("message");
     div.classList.add(type);
     div.textContent=text;
     chatBox.appendChild(div);
-    chatBox.scrollTop=chatBox.scrollHeight;
+    scrollChatToBottom();
 }
 
 async function sendMessage(){
-    const message = query.value;
-    thinking.style.display = "block";
+    const message = query.value.trim();
 
     if(message === ""){
-        thinking.style.display = "none";
         return;
     }
 
     addMessage(message, "user");
     query.value = "";
+    thinking.style.display = "block";
 
     let response;
     try{

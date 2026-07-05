@@ -3,17 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatot</title>
+    <title>AVIAN BEATS CHAT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1> CHATOT </h1>
-    <div id="chatBox"></div>
-    <div class="inputArea">
-        <input type="text" id="userInput" placeholder="Hello ji......." />
-        <button id="sendButton">Send</button>
-    </div>
-    <div id="thinking">Hulku is thinking</div>
+    <header class="topBar">
+        <div class="brand">AVIAN BEATS CHAT</div>
+        <nav class="navLinks" aria-label="Primary navigation">
+            <a class="active" href="#">CHATS</a>
+            <a href="#">DISCOVER</a>
+            <a href="#">LIBRARY</a>
+        </nav>
+        <div class="topActions" aria-label="App controls">
+            <button class="iconButton" type="button" aria-label="Volume">
+                <span class="material-symbols-outlined">volume_up</span>
+            </button>
+            <button class="iconButton" type="button" aria-label="Settings">
+                <span class="material-symbols-outlined">settings</span>
+            </button>
+            <div class="avatar" aria-hidden="true">CB</div>
+        </div>
+    </header>
+
+    <main class="appShell">
+        <section class="chatPanel" aria-label="Chat with Chatot">
+            <div id="chatBox" aria-live="polite">
+                <div class="message bot">Hello! I am Chatot. How can I help you today?</div>
+            </div>
+
+            <div id="thinking">CHATOT IS THINKING...</div>
+
+            <div class="inputArea">
+                <div class="inputWrap">
+                    <input type="text" id="userInput" placeholder="DESCRIBE YOUR RHYTHM..." autocomplete="off" />
+                    <button class="attachButton" type="button" aria-label="Attach file">
+                        <span class="material-symbols-outlined">attach_file</span>
+                    </button>
+                </div>
+                <button id="sendButton" class="neubrutalButton" type="button" aria-label="Send message">
+                    <span class="material-symbols-outlined">send</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footerBar">
+        <span>&copy; 2026 NEUBRUTAL BEATS</span>
+        <div>
+            <a href="#">PRIVACY</a>
+            <a href="#">TERMS</a>
+            <a href="#">FEEDBACK</a>
+        </div>
+    </footer>
 </body>
 
 <script src="script.js"> </script>
