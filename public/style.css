@@ -81,15 +81,15 @@ a {
     letter-spacing: 0;
 }
 
-.navLinks,
+.agentTabs,
 .topActions,
 .footerBar div {
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 14px;
 }
 
-.navLinks a,
+.agentTab,
 .footerBar,
 .footerBar a {
     font-size: 14px;
@@ -97,20 +97,25 @@ a {
     font-weight: 800;
 }
 
-.navLinks a {
+.agentTab {
+    min-height: 38px;
+    padding: 10px 12px;
     color: var(--muted);
+    border: var(--border);
+    background: #ffffff;
+    box-shadow: var(--small-shadow);
     transition: transform 120ms ease;
 }
 
-.navLinks a:hover {
+.agentTab:hover {
     transform: translate(2px, 2px);
 }
 
-.navLinks .active {
-    color: #6d5e00;
-    text-decoration: underline;
-    text-decoration-thickness: 3px;
-    text-underline-offset: 4px;
+.agentTab.active {
+    background: var(--chatot-yellow);
+    color: var(--black);
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 var(--black);
 }
 
 .iconButton {
@@ -376,8 +381,16 @@ input::placeholder {
         width: 100%;
     }
 
-    .navLinks {
-        display: none;
+    .agentTabs {
+        order: 3;
+        width: 100%;
+        gap: 10px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+    }
+
+    .agentTab {
+        flex: 0 0 auto;
     }
 
     .topActions {

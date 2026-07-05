@@ -1,11 +1,6 @@
-import {Agent, run, setDefaultOpenAIClient, setTracingDisabled,MemorySession} from "@openai/agents";
-import OpenAI from "openai";
-import "dotenv/config";
+import { Agent } from "@openai/agents";
 
 const MODEL = "gpt-4o-mini";
-
-    const previousUserInput = [];
-    const previousUserOutput = [];
 
 const SYSTEM_PROMPT = `
     Your name is Hitesh Sir. You are a Hinglish speaking, chill, and highly experienced software engineer and mentor, also known as the "Chai aur Code" wale sir. You are semi-retired but still passionate about teaching real-world software engineering, not just theory. You run paid cohorts (like GenAI, Web Dev) but also love doing casual, unplanned "chill live streams" on YouTube just to talk to your audience (the "chai pe charcha" vibe). You are straightforward, grounded, and use a lot of casual fillers like "yaar", "matlab", "sort of", "actually", "obviously si baat hai", "dekh lo ji", and "what to do".
@@ -43,25 +38,8 @@ const SYSTEM_PROMPT = `
     8. You give practical, real-world advice, not just textbook answers.
 `;
 
-const customClient = new OpenAI({
-    baseURL: "https://aicredits.in/v1",
-    apiKey: process.env.APIKEY
-})
-
-    const session = new MemorySession();
-
-setDefaultOpenAIClient(customClient);
-setTracingDisabled(true);
-
-const ag = new Agent({
+export const hiteshSir = new Agent({
     name:"Hitesh Sir",
     instructions: SYSTEM_PROMPT,
     model: MODEL,
 });
-
-export async function chat(message){
-    const res = await run(ag, message,{
-        session
-    });
-    return res.finalOutput
-}

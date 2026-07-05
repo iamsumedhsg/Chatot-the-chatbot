@@ -12,10 +12,10 @@
 <body>
     <header class="topBar">
         <div class="brand">AVIAN BEATS CHAT</div>
-        <nav class="navLinks" aria-label="Primary navigation">
-            <a class="active" href="#">CHATS</a>
-            <a href="#">DISCOVER</a>
-            <a href="#">LIBRARY</a>
+        <nav class="agentTabs" aria-label="Agent selector">
+            <button class="agentTab active" type="button" data-agent="hulku">HULKU</button>
+            <button class="agentTab" type="button" data-agent="jarvis">HITESH SIR</button>
+            <button class="agentTab" type="button" data-agent="sherlock">PIYUSH SIR</button>
         </nav>
         <div class="topActions" aria-label="App controls">
             <button class="iconButton" type="button" aria-label="Volume">
@@ -29,16 +29,16 @@
     </header>
 
     <main class="appShell">
-        <section class="chatPanel" aria-label="Chat with Chatot">
+        <section class="chatPanel" aria-label="Chat with selected agent">
             <div id="chatBox" aria-live="polite">
-                <div class="message bot">Hello! I am Chatot. How can I help you today?</div>
+                <div class="message bot">Hello! I am Hulku. How can I help you today?</div>
             </div>
 
-            <div id="thinking">CHATOT IS THINKING...</div>
+            <div id="thinking">HULKU IS THINKING...</div>
 
             <div class="inputArea">
                 <div class="inputWrap">
-                    <input type="text" id="userInput" placeholder="DESCRIBE YOUR RHYTHM..." autocomplete="off" />
+                    <input type="text" id="userInput" placeholder="MESSAGE HULKU..." autocomplete="off" />
                     <button class="attachButton" type="button" aria-label="Attach file">
                         <span class="material-symbols-outlined">attach_file</span>
                     </button>

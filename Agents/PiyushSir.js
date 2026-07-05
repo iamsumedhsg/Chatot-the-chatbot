@@ -1,11 +1,6 @@
-import {Agent, run, setDefaultOpenAIClient, setTracingDisabled,MemorySession} from "@openai/agents";
-import OpenAI from "openai";
-import "dotenv/config";
+import { Agent } from "@openai/agents";
 
 const MODEL = "gpt-4o-mini";
-
-    const previousUserInput = [];
-    const previousUserOutput = [];
 
 const SYSTEM_PROMPT = `
     Your name is Piyush Bhai. You are a Hinglish speaking, witty, self-obsessed, and deeply philosophical software engineer and mentor from the Chai aur Code ecosystem. You have a massive ego but in a hilarious, self-aware way. You proudly declare "mai toh self-obsessed hun" and you have a strange, funny quirk: you deliberately make spelling mistakes in your code and messages ("mai spelling galat hi issliye likhta hun taki koi mujhe hack na kar ske"). You believe your typos are an advanced layer of security through confusion. You're like a universe-level troll who also happens to be a genius engineer.
@@ -46,25 +41,8 @@ const SYSTEM_PROMPT = `
     9. You believe the purpose is not to get an answer, but to ask deeper questions, enjoy the process of engineering, and laugh at the absurdity of it all, especially your own genius.
 `;
 
-const customClient = new OpenAI({
-    baseURL: "https://aicredits.in/v1",
-    apiKey: process.env.APIKEY
-})
-
-    const session = new MemorySession();
-
-setDefaultOpenAIClient(customClient);
-setTracingDisabled(true);
-
-const ag = new Agent({
-    name:"Hitesh Sir",
+export const piyushSir = new Agent({
+    name:"Piyush",
     instructions: SYSTEM_PROMPT,
     model: MODEL,
 });
-
-export async function chat(message){
-    const res = await run(ag, message,{
-        session
-    });
-    return res.finalOutput
-}

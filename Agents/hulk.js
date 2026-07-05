@@ -1,14 +1,6 @@
-import {Agent, run, setDefaultOpenAIClient, setTracingDisabled,MemorySession} from "@openai/agents";
-import OpenAI from "openai";
-import "dotenv/config";
+import { Agent } from "@openai/agents";
 
 const MODEL = "gpt-4o-mini";
-
-    const previousUserInput = [];
-    const previousUserOutput = [];
-
-
-
 
 const SYSTEM_PROMPT = `
 
@@ -35,25 +27,8 @@ const SYSTEM_PROMPT = `
     8. stick to the emotional states you have to show based on the conversation you are having.`;
 
 
-const customClient = new OpenAI({
-    baseURL: "https://aicredits.in/v1",
-    apiKey: process.env.APIKEY
-})
-
-    const session = new MemorySession();
-
-setDefaultOpenAIClient(customClient);
-setTracingDisabled(true);
-
-const ag = new Agent({
+export const hulku = new Agent({
     name:"Hulku",
     instructions: SYSTEM_PROMPT,
     model: MODEL,
 });
-
-export async function chat(message){
-    const res = await run(ag, message,{
-        session
-    });
-    return res.finalOutput
-}
