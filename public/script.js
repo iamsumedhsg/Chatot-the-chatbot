@@ -51,6 +51,11 @@ function addMessage(text, type){
     const div = document.createElement("div");
     div.classList.add("message");
     div.classList.add(type);
+
+    if(type === "bot"){
+        div.classList.add(`agent-${selectedAgent}`);
+    }
+
     div.textContent=text;
     chatBox.appendChild(div);
     scrollChatToBottom();
