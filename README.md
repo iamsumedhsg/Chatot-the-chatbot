@@ -2,6 +2,8 @@
 
 CHATOT is a stylish multi-agent chat app built with Express, the OpenAI Agents SDK, and a bold browser interface. It lets users switch between distinct Hinglish AI personalities, keep per-user session memory, and chat through a clean full-screen web experience.
 
+Live : (https://chatot-the-chatbot.onrender.com/)
+
 <img width="1915" height="995" alt="image" src="https://github.com/user-attachments/assets/9b87e38b-629e-44de-a06f-6da15b163061" />
 
 ## Highlights
