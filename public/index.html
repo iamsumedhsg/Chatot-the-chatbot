@@ -1,16 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="app-loading">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHATOT</title>
+    <style>
+        .app-loading body > :not(#cssLoader) {
+            visibility: hidden;
+        }
+
+        #cssLoader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: grid;
+            place-items: center;
+            background: #000000;
+            color: #ffde00;
+            font-family: monospace;
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 0;
+        }
+
+        html:not(.app-loading) #cssLoader {
+            display: none;
+        }
+    </style>
+    <script>
+        function revealApp(){
+            document.documentElement.classList.remove("app-loading");
+        }
+
+        window.addEventListener("load", revealApp);
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" href="BT441.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" onload="revealApp()">
 </head>
 <body>
+    <div id="cssLoader">LOADING...</div>
+
     <video id="backgroundVideo" class="backgroundVideo" src="loop.mov" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
 
     <header class="topBar">
