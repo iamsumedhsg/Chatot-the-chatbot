@@ -1,6 +1,8 @@
-# CHATOT
+# CHATOT : The ChatBot
 
 CHATOT is a stylish multi-agent chat app built with Express, the OpenAI Agents SDK, and a bold browser interface. It lets users switch between distinct Hinglish AI personalities, keep per-user session memory, and chat through a clean full-screen web experience.
+
+<img width="1915" height="995" alt="image" src="https://github.com/user-attachments/assets/9b87e38b-629e-44de-a06f-6da15b163061" />
 
 ## Highlights
 
@@ -150,6 +152,8 @@ A witty, philosophical engineer persona that mixes software depth, humor, self-a
 `session.js` stores a `MemorySession` for each unique combination of user ID and agent name. The frontend creates and stores a browser-side `userId` in `localStorage`, allowing the backend to continue the right conversation thread for each selected personality.
 
 ## Adding a New Agent
+
+<img width="344" height="65" alt="image" src="https://github.com/user-attachments/assets/4dfd2287-e93c-4600-b5ae-4a83f6e5f445" />
 
 1. Create a new file inside `Agents/`.
 2. Export an `Agent` instance from that file.
