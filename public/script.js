@@ -1,6 +1,7 @@
 const query = document.getElementById("userInput");
 const button = document.getElementById("sendButton");
 const chatBox = document.getElementById("chatBox");
+const thinking = document.getElementById("thinking");
 
 function addMessage(text, type){
     const div = document.createElement("div");
@@ -13,21 +14,39 @@ function addMessage(text, type){
 
 async function sendMessage(){
     const message = query.value;
-    if(message === "") return;
-    addMessage(message, "user");
-    input.value="";
-    const response=await fetch("/chat", {
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify({
-            message
-        })
-    });
-    const data=await response.json();
+    thinking.style.display = "block";
 
-    addMessage(data.reply,"bot");
+    if(message === ""){
+        thinking.style.display = "none";
+        return;
+    }
+
+    addMessage(message, "user");
+    query.value = "";
+
+    let response;
+    try{
+        response = await fetch("/chat", {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                message
+            })
+        });
+    } catch(e){
+        console.error(e);
+        thinking.style.display = "none";
+        addMessage("Sorry, an error occurred while sending your message.", "bot");
+        return;
+    } finally{
+        thinking.style.display = "none";
+    }
+
+    const data = await response.json();
+    console.log(data);
+    addMessage(data.reply, "bot");
 }
 
 
@@ -38,3 +57,5 @@ query.addEventListener("keydown", (e) => {
         sendMessage();
     }
 });
+
+
