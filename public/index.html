@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHATOT</title>
     <style>
-        .app-loading body > :not(#cssLoader) {
+        html.app-loading,
+        html.app-loading body {
+            min-height: 100%;
+            margin: 0;
+            background: #000000;
+        }
+
+        .app-loading #appRoot {
             visibility: hidden;
+            opacity: 0;
         }
 
         #cssLoader {
@@ -21,79 +29,85 @@
             font-size: 18px;
             font-weight: 800;
             letter-spacing: 0;
+            text-align: center;
         }
 
-        html:not(.app-loading) #cssLoader {
+        html.css-ready #cssLoader {
             display: none;
+        }
+
+        html.css-ready #appRoot {
+            visibility: visible;
+            opacity: 1;
         }
     </style>
     <script>
-        function revealApp(){
+        function markCssReady(){
+            document.documentElement.classList.add("css-ready");
             document.documentElement.classList.remove("app-loading");
         }
 
-        window.addEventListener("load", revealApp);
+        function showCssError(){
+            var loader = document.getElementById("cssLoader");
+
+            if(loader){
+                loader.textContent = "CSS NOT FOUND";
+            }
+        }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" href="BT441.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" onload="revealApp()">
+    <link rel="stylesheet" href="./style.css" onload="markCssReady()" onerror="showCssError()">
 </head>
 <body>
     <div id="cssLoader">LOADING...</div>
 
-    <video id="backgroundVideo" class="backgroundVideo" src="loop.mov" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+    <div id="appRoot">
+        <video id="backgroundVideo" class="backgroundVideo" src="loop.mov" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
 
-    <header class="topBar">
-        <div class="brand">CHATOT</div>
-        <nav class="agentTabs" aria-label="Agent selector">
-            <button class="agentTab active" type="button" data-agent="hulku">HULKU</button>
-            <button class="agentTab" type="button" data-agent="jarvis">HITESH SIR</button>
-            <button class="agentTab" type="button" data-agent="sherlock">PIYUSH SIR</button>
-        </nav>
-        <div class="topActions" aria-label="App controls">
-            <button class="iconButton" type="button" aria-label="Volume">
-                <span class="material-symbols-outlined">volume_up</span>
-            </button>
-            <button class="iconButton" type="button" aria-label="Settings">
-                <span class="material-symbols-outlined">settings</span>
-            </button>
-            <div class="avatar" aria-hidden="true">CB</div>
-        </div>
-    </header>
+        <header class="topBar">
+            <div class="brand">CHATOT</div>
+            <nav class="agentTabs" aria-label="Agent selector">
+                <button class="agentTab active" type="button" data-agent="hulku">HULKU</button>
+                <button class="agentTab" type="button" data-agent="jarvis">HITESH SIR</button>
+                <button class="agentTab" type="button" data-agent="sherlock">PIYUSH SIR</button>
+            </nav>
+        </header>
 
-    <main class="appShell">
-        <section class="chatPanel" aria-label="Chat with selected agent">
-            <div id="chatBox" aria-live="polite">
-                <div class="message bot">Hello! I am Hulku. How can I help you today?</div>
-            </div>
+        <main class="appShell">
+            <section class="chatPanel" aria-label="Chat with selected agent">
+                <div id="chatBox" aria-live="polite">
+                    <div class="message bot">Hello! I am Hulku. How can I help you today?</div>
+                </div>
 
-            <div id="thinking">HULKU IS THINKING...</div>
+                <div id="thinking">HULKU IS THINKING...</div>
 
-            <div class="inputArea">
-                <div class="inputWrap">
-                    <input type="text" id="userInput" placeholder="MESSAGE HULKU..." autocomplete="off" />
-                    <button class="attachButton" type="button" aria-label="Attach file">
-                        <span class="material-symbols-outlined">attach_file</span>
+                <div class="inputArea">
+                    <div class="inputWrap">
+                        <input type="text" id="userInput" placeholder="MESSAGE HULKU..." autocomplete="off" />
+                        <button class="attachButton" type="button" aria-label="Attach file">
+                            <span class="material-symbols-outlined">attach_file</span>
+                        </button>
+                    </div>
+                    <button id="sendButton" class="neubrutalButton" type="button" aria-label="Send message">
+                        <span class="material-symbols-outlined">send</span>
                     </button>
                 </div>
-                <button id="sendButton" class="neubrutalButton" type="button" aria-label="Send message">
-                    <span class="material-symbols-outlined">send</span>
-                </button>
+            </section>
+        </main>
+
+        <footer class="footerBar">
+            <span>&copy; 2026 HolyMoly</span>
+            <div>
+                <a href="#">PRIVACY</a>
+                <a href="#">TERMS</a>
+                <a href="#">FEEDBACK</a>
             </div>
-        </section>
-    </main>
+        </footer>
 
-    <footer class="footerBar">
-        <span>&copy; 2026 NEUBRUTAL BEATS</span>
-        <div>
-            <a href="#">PRIVACY</a>
-            <a href="#">TERMS</a>
-            <a href="#">FEEDBACK</a>
-        </div>
-    </footer>
+        <script src="script.js"></script>
+    </div>
 </body>
-
-<script src="script.js"> </script>
 </html>
