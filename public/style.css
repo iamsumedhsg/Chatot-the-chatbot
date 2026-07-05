@@ -25,14 +25,32 @@ body {
 }
 
 body {
+    position: relative;
     min-height: 100vh;
     margin: 0;
-    background: var(--sky-blue);
+    background: #000000;
     color: var(--text);
     display: flex;
     flex-direction: column;
     overflow: hidden;
     font-family: "JetBrains Mono", monospace;
+}
+
+.backgroundVideo {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.topBar,
+.appShell,
+.footerBar {
+    position: relative;
+    z-index: 1;
 }
 
 button,
@@ -161,7 +179,8 @@ a {
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(2px);
     border: var(--border);
     box-shadow: var(--shadow);
 }
@@ -180,7 +199,7 @@ a {
     background:
         linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-        #ffffff;
+        rgba(255, 255, 255, 0.62);
     background-size: 28px 28px;
 }
 
@@ -269,7 +288,7 @@ a {
     align-items: center;
     gap: 16px;
     padding: 24px;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.86);
     border-top: var(--border);
 }
 

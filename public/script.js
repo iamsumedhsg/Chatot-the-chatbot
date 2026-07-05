@@ -2,6 +2,7 @@ const query = document.getElementById("userInput");
 const button = document.getElementById("sendButton");
 const chatBox = document.getElementById("chatBox");
 const thinking = document.getElementById("thinking");
+const backgroundVideo = document.getElementById("backgroundVideo");
 const agentTabs = document.querySelectorAll(".agentTab");
 
 const agents = {
@@ -25,6 +26,16 @@ let userId = localStorage.getItem("userId");
 if(!userId){
     userId = crypto.randomUUID();
     localStorage.setItem("userId", userId);
+}
+
+function startBackgroundVideo(){
+    if(!backgroundVideo){
+        return;
+    }
+
+    backgroundVideo.muted = true;
+    backgroundVideo.loop = true;
+    backgroundVideo.play().catch(() => {});
 }
 
 function scrollChatToBottom(){
@@ -118,4 +129,6 @@ query.addEventListener("keydown", (e) => {
 });
 
 setAgent(selectedAgent);
+startBackgroundVideo();
+document.addEventListener("click", startBackgroundVideo, { once: true });
 
